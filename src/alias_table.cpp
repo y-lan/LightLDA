@@ -101,12 +101,15 @@ namespace multiverso { namespace lightlda
                 }
                 if (size == 0)
                 {
-                    Log::Error("Fail to build alias row, capacity of row = %d\n",
+                    Log::Info("Fail to build alias row, capacity of row = %d\n",
                         word_topic_row.NonzeroSize());
                 }
             }
-            AliasMultinomialRNG(size, mass_[word], height_[word], 
-                memory_block_ + word_entry.begin_offset);
+            if (size != 0)
+            {
+                AliasMultinomialRNG(size, mass_[word], height_[word],
+                    memory_block_ + word_entry.begin_offset);
+            }
         }
         return 0;
     }
